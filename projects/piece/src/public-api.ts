@@ -31,3 +31,6 @@ export {
 
 export { AbstractListComponent } from "./lib/ngrx/abstract-list.component";
 export { PieceCityModule } from "./lib/components/piece-city/piece-city.module";
+export {
+  SearchCityInputConfig
+} from "./lib/components/piece-city/search-city-input/search-city-input.component";

@@ -1,11 +1,10 @@
 import {
   Component,
-  OnInit,
+  EventEmitter,
   Input,
   Output,
-  EventEmitter,
-  ViewChild,
-  SimpleChanges
+  SimpleChanges,
+  ViewChild
 } from "@angular/core";
 import { MatPaginator } from "@angular/material";
 

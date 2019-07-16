@@ -15,7 +15,8 @@
     "lib": ["es2018", "dom"],
     "paths": {
       "piece": ["dist/piece"],
-      "piece/*": ["dist/piece/*"]
+      "piece/*": ["dist/piece/*"],
+      "@env*": ["src/environments/*"]
     }
   }
 }

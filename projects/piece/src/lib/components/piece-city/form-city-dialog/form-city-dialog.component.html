@@ -1,7 +1,9 @@
 <div class="dialog-content-wrapper dialog-form-city p-0">
   <mat-toolbar matDialogTitle class="mat-primary m-0">
     <div fxFlex fxLayout="row" fxLayoutAlign="space-between center">
-      <span class="tc-white">Cadastrar cidade</span>
+      <span class="tc-white">{{
+        "RAPI.PIECE.CITY.FORM.NEW_CITY" | translate
+      }}</span>
       <button
         mat-button
         class="mat-icon-button"
@@ -19,7 +21,7 @@
         <mat-form-field fxFlex class="search-city-input">
           <input
             matInput
-            placeholder="Buscar cidade"
+            placeholder="{{'RAPI.PIECE.CITY.FORM.SEARCH' | translate}}"
             formControlName="cityInput"
           />
         </mat-form-field>
@@ -30,7 +32,7 @@
           color="primary"
           class="ml-16"
         >
-          Buscar
+        {{'RAPI.PIECE.CITY.FORM.SEARCH_BUTTON' | translate}}
         </button>
       </div>
     </form>
@@ -43,18 +45,18 @@
         ></mat-spinner>
       </div>
       <div *ngIf="isLoading === false && cities.length > 0">
-        <h3 mat-subheader>Cidades encontradas</h3>
+        <h3 mat-subheader>{{'RAPI.PIECE.CITY.FORM.FOUNDED_CITIES' | translate}}</h3>
         <mat-list-item *ngFor="let city of cities">
           <h4 mat-line>{{ city.description }}</h4>
           <button (click)="saveCity(city)" mat-raised-button="" color="primary">
-            Selecionar
+            {{'RAPI.PIECE.CITY.FORM.SELECT' | translate}}
           </button>
         </mat-list-item>
       </div>
       <mat-list-item
         *ngIf="cities.length == 0 && isBusqued == true && isLoading === false"
       >
-        <h4 mat-line>Não encontramos cidades para sua busca</h4>
+        <h4 mat-line>{{'RAPI.PIECE.CITY.FORM.NOT_FOUND' | translate}}</h4>
       </mat-list-item>
     </mat-list>
   </div>
@@ -74,11 +76,11 @@
       matTooltip="Delete"
     >
       <mat-icon color="warn">close</mat-icon>
-      Cancelar
+      {{'COMMONS.FORM.LABELS.CANCEL' | translate}}
     </button>
     <button mat-flat-button color="accent" (click)="save()" aria-label="SAVE">
       <mat-icon>send</mat-icon>
-      Salvar
+      {{'COMMONS.FORM.LABELS.SAVE' | translate}}
     </button>
   </div>
 </div>

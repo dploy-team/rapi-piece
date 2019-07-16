@@ -5,7 +5,7 @@ import { CollectionResponse, ItemResponse } from "@dploy-rapi/w3";
 
 import { Observable } from "rxjs";
 import { map, tap } from "rxjs/operators";
-import { environment } from "src/environments/environment";
+import { environment } from "@env/environment";
 
 @Injectable()
 export class PieceCityService {

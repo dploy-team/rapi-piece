@@ -9,6 +9,7 @@ import { MaterialModule } from "../../modules/material.module";
 import { W3Module } from "@dploy-rapi/w3";
 import { ReactiveFormsModule } from "@angular/forms";
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { TranslateModule } from "@ngx-translate/core";
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { FlexLayoutModule } from "@angular/flex-layout";
     MaterialModule,
     W3Module,
     ReactiveFormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    TranslateModule
   ],
   declarations: [
     PieceCityComponent,

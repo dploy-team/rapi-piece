@@ -1,28 +1,28 @@
 import { NgModule } from "@angular/core";
 import {
-  MatCardModule,
-  MatFormFieldModule,
-  MatInputModule,
+  MatAutocompleteModule,
   MatButtonModule,
-  MatIconModule,
-  MatSidenavModule,
-  MatListModule,
-  MatToolbarModule,
-  MatRippleModule,
+  MatCardModule,
+  MatCheckboxModule,
   MatDialogModule,
-  MatTabsModule,
-  MatSelectModule,
+  MatDividerModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatPaginatorModule,
   MatProgressBarModule,
   MatProgressSpinnerModule,
-  MatCheckboxModule,
-  MatDividerModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatSidenavModule,
   MatSlideToggleModule,
-  MatTableModule,
-  MatPaginatorModule,
-  MatTooltipModule,
   MatSortModule,
-  MatDatepickerModule,
-  MatAutocompleteModule
+  MatTableModule,
+  MatTabsModule,
+  MatToolbarModule,
+  MatTooltipModule,
+  MatBadgeModule
 } from "@angular/material";
 import { TextMaskModule } from "angular2-text-mask";
 
@@ -50,7 +50,8 @@ import { TextMaskModule } from "angular2-text-mask";
     MatTooltipModule,
     TextMaskModule,
     MatSortModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatBadgeModule
   ],
   exports: [
     MatCardModule,
@@ -75,7 +76,8 @@ import { TextMaskModule } from "angular2-text-mask";
     MatTooltipModule,
     TextMaskModule,
     MatSortModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatBadgeModule
   ],
   declarations: [],
   providers: []
