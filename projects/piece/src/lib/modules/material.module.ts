@@ -24,7 +24,6 @@ import {
   MatTooltipModule,
   MatBadgeModule
 } from "@angular/material";
-import { TextMaskModule } from "angular2-text-mask";
 
 @NgModule({
   imports: [
@@ -48,7 +47,6 @@ import { TextMaskModule } from "angular2-text-mask";
     MatTableModule,
     MatPaginatorModule,
     MatTooltipModule,
-    TextMaskModule,
     MatSortModule,
     MatAutocompleteModule,
     MatBadgeModule
@@ -74,7 +72,6 @@ import { TextMaskModule } from "angular2-text-mask";
     MatTableModule,
     MatPaginatorModule,
     MatTooltipModule,
-    TextMaskModule,
     MatSortModule,
     MatAutocompleteModule,
     MatBadgeModule

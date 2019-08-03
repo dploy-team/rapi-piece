@@ -16,7 +16,7 @@
     "paths": {
       "piece": ["dist/piece"],
       "piece/*": ["dist/piece/*"],
-      "@env*": ["src/environments/*"]
+      "@env/*": ["projects/piece/src/environments/*"]
     }
   }
 }

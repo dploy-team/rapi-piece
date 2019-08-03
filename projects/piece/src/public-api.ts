@@ -34,3 +34,7 @@ export { PieceCityModule } from "./lib/components/piece-city/piece-city.module";
 export {
   SearchCityInputConfig
 } from "./lib/components/piece-city/search-city-input/search-city-input.component";
+
+export {
+  PieceNotFoundLoadingModule
+} from "./lib/components/not-found-loading/not-found-loading.module";
