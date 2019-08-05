@@ -1,0 +1,35 @@
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl">
+  <mat-tree-node *matTreeNodeDef="let node" matTreeNodePadding>
+    <button mat-icon-button disabled></button>
+    {{ node.value?.nome }}
+  </mat-tree-node>
+  <mat-tree-node *matTreeNodeDef="let node; when: hasChild" matTreeNodePadding>
+    <button
+      mat-icon-button
+      [attr.aria-label]="'toggle ' + node.filename"
+      matTreeNodeToggle
+      *ngIf="node?.level <= 3"
+    >
+      <mat-icon class="mat-icon-rtl-mirror">
+        {{ treeControl.isExpanded(node) ? "expand_more" : "chevron_right" }}
+      </mat-icon>
+    </button>
+    <mat-checkbox
+      class="mr-12"
+      [checked]="node?.checked"
+      [indeterminate]="descendantsPartiallySelected(node)"
+      (change)="toggleSelect(node, $event.checked)"
+      >{{ node.item }}</mat-checkbox
+    >
+    {{ node.value.nome
+    }}<span class="tc-paragraph-light font-10 ml-8">{{
+      node?.level === 3 ? "(Mesoregião)" : ""
+    }}</span>
+    <mat-progress-spinner
+      *ngIf="node.isLoading"
+      [diameter]="20"
+      mode="indeterminate"
+      class="ml-12"
+    ></mat-progress-spinner>
+  </mat-tree-node>
+</mat-tree>

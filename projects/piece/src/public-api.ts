@@ -38,3 +38,16 @@ export {
 export {
   PieceNotFoundLoadingModule
 } from "./lib/components/not-found-loading/not-found-loading.module";
+
+/**
+ * IBGE
+ */
+export { IbgeTreeModule } from "./lib/apps/ibge-tree/ibge-tree.module";
+export {
+  EstadoIbge,
+  RegiaoIbge,
+  MicrorregiaoIbge,
+  MesorregiaoIbge,
+  MunicipioIbge
+} from "./lib/apps/ibge-tree/ibge.model";
+export { IbgeService } from "./lib/apps/ibge-tree/ibge.service";
