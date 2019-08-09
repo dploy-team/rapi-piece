@@ -1,22 +1,19 @@
-import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { IbgeTreeComponent } from "./ibge-tree.component";
-import { HttpClientModule } from "@angular/common/http";
-import { IbgeService } from "./ibge.service";
+import { NgModule } from "@angular/core";
 import {
-  MatTreeModule,
-  MatIconModule,
-  MatProgressBarModule,
   MatButtonModule,
+  MatCheckboxModule,
+  MatIconModule,
   MatProgressSpinnerModule,
-  MatCheckboxModule
+  MatTreeModule
 } from "@angular/material";
+import { IbgeTreeComponent } from "./ibge-tree.component";
+import { IbgeService } from "./ibge.service";
 
 @NgModule({
   declarations: [IbgeTreeComponent],
   imports: [
     CommonModule,
-    HttpClientModule,
     MatTreeModule,
     MatIconModule,
     MatProgressSpinnerModule,

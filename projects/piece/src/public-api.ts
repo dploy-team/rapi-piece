@@ -51,3 +51,10 @@ export {
   MunicipioIbge
 } from "./lib/apps/ibge-tree/ibge.model";
 export { IbgeService } from "./lib/apps/ibge-tree/ibge.service";
+
+/**
+ * Timeline
+ */
+
+export { TimelineModule } from "./lib/components/timeline/timeline.module";
+export { PieceTimelineModel } from "./lib/components/timeline/timeline.model";

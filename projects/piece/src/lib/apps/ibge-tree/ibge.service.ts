@@ -16,47 +16,37 @@ export class IbgeService {
   constructor(private httpClient: HttpClient) {}
 
   getRegioes(): Observable<RegiaoIbge[]> {
-    return this.httpClient.get<RegiaoIbge[]>(`${environment.IBGE_URL}/regioes`);
+    return this.getProxyData(`/api/v1/localidades/regioes`);
   }
 
   getEstados(regiao?): Observable<EstadoIbge[]> {
     if (regiao)
-      return this.httpClient.get<EstadoIbge[]>(
-        `${environment.IBGE_URL}/regioes/${regiao}/estados`
-      );
-    return this.httpClient.get<EstadoIbge[]>(
-      `${environment.IBGE_URL}/regioes/estados`
-    );
+      return this.getProxyData(`/api/v1/localidades/regioes/${regiao}/estados`);
+    return this.getProxyData(`/api/v1/localidades/regioes/estados`);
   }
 
   getMesorregioes(estado?): Observable<MesorregiaoIbge[]> {
     if (estado)
-      return this.httpClient.get<MesorregiaoIbge[]>(
-        `${environment.IBGE_URL}/estados/${estado}/mesorregioes`
+      return this.getProxyData(
+        `/api/v1/localidades/estados/${estado}/mesorregioes`
       );
-    return this.httpClient.get<MesorregiaoIbge[]>(
-      `${environment.IBGE_URL}/regioes/mesorregioes`
-    );
+    return this.getProxyData(`/api/v1/localidades/regioes/mesorregioes`);
   }
 
   getMicrorregioes(mesorregiao?): Observable<MicrorregiaoIbge[]> {
     if (mesorregiao)
-      return this.httpClient.get<MicrorregiaoIbge[]>(
-        `${environment.IBGE_URL}/mesorregioes/${mesorregiao}/microrregioes`
+      return this.getProxyData(
+        `/api/v1/localidades/mesorregioes/${mesorregiao}/microrregioes`
       );
-    return this.httpClient.get<MicrorregiaoIbge[]>(
-      `${environment.IBGE_URL}/microrregioes`
-    );
+    return this.getProxyData(`/api/v1/localidades/microrregioes`);
   }
 
   getMunicipios(microrregiao?): Observable<MunicipioIbge[]> {
     if (microrregiao)
-      return this.httpClient.get<MunicipioIbge[]>(
-        `${environment.IBGE_URL}/microrregioes/${microrregiao}/municipios`
+      return this.getProxyData(
+        `/api/v1/localidades/microrregioes/${microrregiao}/municipios`
       );
-    return this.httpClient.get<MunicipioIbge[]>(
-      `${environment.IBGE_URL}/municipios`
-    );
+    return this.getProxyData(`/api/v1/localidades/municipios`);
   }
 
   getMunicipiosByLevel(level, id): Observable<number[]> {
@@ -66,10 +56,14 @@ export class IbgeService {
     else if (level === 2) levelName = "mesorregioes";
     else if (level === 3) levelName = "microrregioes";
 
+    return this.getProxyData(
+      `/api/v1/localidades/${levelName}/${id}/municipios`
+    ).pipe(map(municipios => municipios.map(mun => mun.id)));
+  }
+
+  getProxyData(uri): Observable<any[]> {
     return this.httpClient
-      .get<MunicipioIbge[]>(
-        `${environment.IBGE_URL}/${levelName}/${id}/municipios`
-      )
-      .pipe(map(municipios => municipios.map(mun => mun.id)));
+      .post<any[]>(`${environment.IBGE_URL}`, { uri: uri })
+      .pipe(map((res: any) => res.data));
   }
 }

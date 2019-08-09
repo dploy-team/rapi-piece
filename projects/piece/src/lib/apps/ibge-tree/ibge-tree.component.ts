@@ -8,6 +8,7 @@ import { Component, Injectable, Input, OnInit } from "@angular/core";
 import { BehaviorSubject, merge, Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { IbgeService } from "./ibge.service";
+import { HttpClient } from "@angular/common/http";
 
 /** Flat node with expandable and level information */
 export class IgbeNode {
@@ -142,9 +143,10 @@ export class IbgeTreeComponent implements OnInit {
       this.getLevel,
       this.isExpandable
     );
-    this.dataSource = new DynamicDataSource(this.treeControl, ibgeService);
+    this.dataSource = new DynamicDataSource(this.treeControl, this.ibgeService);
 
     this.ibgeService.getRegioes().subscribe(res => {
+      console.log(res);
       this.dataSource.data = res.map(r => new IgbeNode(r, 0, true, false));
     });
   }
@@ -190,8 +192,6 @@ export class IbgeTreeComponent implements OnInit {
           .getMunicipiosByLevel(node.level, node.value.id)
           .subscribe(res => {
             this.selectedMunicipios.push(...res);
-
-            console.log(this.selectedMunicipios);
           });
       }
     } else {
@@ -210,8 +210,6 @@ export class IbgeTreeComponent implements OnInit {
                 1
               )
             );
-
-            console.log(this.selectedMunicipios);
           });
       }
     }

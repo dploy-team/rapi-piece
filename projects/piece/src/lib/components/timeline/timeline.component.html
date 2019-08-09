@@ -1,0 +1,27 @@
+<div class="line"></div>
+<div fxLayout="column" *ngFor="let item of timeline">
+  <div fxLayout="row" class="m-12" fxLayoutAlign="start start">
+    <div
+      class="rotate mr-16"
+      [style.backgroundColor]="item?.properties.color"
+      *ngIf="!item?.properties?.icon"
+    ></div>
+    <div
+      fxLayoutAlign="center center"
+      class="rounded h-30 w-30 mr-16"
+      [style.backgroundColor]="item?.properties.color"
+      *ngIf="item?.properties?.icon"
+    >
+      <mat-icon class="tc-white">{{ item?.properties?.icon }}</mat-icon>
+    </div>
+    <div fxLayout="column">
+      <span class="tc-paragraph-light font-14">{{
+        item?.created_at | date: "dd/MM/yyyy HH:mm"
+      }}</span>
+      <b class="mb-12">{{ item?.description }}</b>
+      <span class="tc-paragraph-light font-14">{{
+        item?.properties?.caption
+      }}</span>
+    </div>
+  </div>
+</div>
