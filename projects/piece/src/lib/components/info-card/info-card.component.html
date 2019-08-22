@@ -1,0 +1,12 @@
+<mat-card fxLayout="row">
+  <div
+    [style.backgroundColor]="color"
+    class="p-8 div"
+    fxLayoutAlign="center center"
+  >
+    <mat-icon class="tc-white">{{ type }}</mat-icon>
+  </div>
+  <div fxFlex [style.backgroundColor]="accentColor" class="p-8">
+    <ng-content></ng-content>
+  </div>
+</mat-card>

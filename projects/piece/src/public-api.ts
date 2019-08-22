@@ -58,3 +58,11 @@ export { IbgeService } from "./lib/apps/ibge-tree/ibge.service";
 
 export { TimelineModule } from "./lib/components/timeline/timeline.module";
 export { PieceTimelineModel } from "./lib/components/timeline/timeline.model";
+
+/**
+ * Info Card
+ */
+export { InfoCardModule } from "./lib/components/info-card/info-card.module";
+export {
+  InfoCardComponent
+} from "./lib/components/info-card/info-card.component";
