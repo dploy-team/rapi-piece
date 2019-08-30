@@ -66,3 +66,10 @@ export { InfoCardModule } from "./lib/components/info-card/info-card.module";
 export {
   InfoCardComponent
 } from "./lib/components/info-card/info-card.component";
+
+/**
+ * Flare
+ */
+export {
+  FlareEngineModule
+} from "./lib/components/flare-engine/flare-engine.module";
