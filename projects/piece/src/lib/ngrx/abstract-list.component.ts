@@ -13,7 +13,7 @@ import { filter, takeUntil, take } from "rxjs/operators";
 export abstract class AbstractListComponent<T> implements OnInit, OnDestroy {
   public dataSource: T[] = [];
   public displayedColumns = ["id", "name", "created_at", "actions"];
-  public params: any = {};
+  public params: any;
   public pagination = {
     total: 0,
     per_page: 0
@@ -29,7 +29,7 @@ export abstract class AbstractListComponent<T> implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.loading$ = this.loadingSelector();
-
+    console.log(this._params);
     this.buildForm();
     this.makeInitialParams();
     this.makeParamsFromState();
@@ -62,15 +62,15 @@ export abstract class AbstractListComponent<T> implements OnInit, OnDestroy {
   protected abstract loadingSelector(): Observable<boolean>;
 
   pageEvent(ev: any): void {
-    this.params.page = ev.page;
-    this.params.paginate = ev.pageSize;
+    this._params.page = ev.page;
+    this._params.paginate = ev.pageSize;
+    this.updateUrl(this._params);
     this.loadResource();
   }
 
   sortData(ev: Sort): void {
-    console.log(ev);
-    this.params.sort = makeSortParams(ev, this._config.sort);
-    this.params.page = 1;
+    this._params.sort = makeSortParams(ev, this._config.sort);
+    this._params.page = 1;
     this.loadResource();
   }
 
@@ -122,9 +122,7 @@ export abstract class AbstractListComponent<T> implements OnInit, OnDestroy {
   search(): void {
     this.mergeParams(this.getFormData());
     // this._params = this.getFormData();
-    this._params.page = 1;
-    console.log(this._params);
-    console.log("SEARCH", this._params);
+    // this._params.page = 1;
     this.loadResource();
     this.updateUrl(this._params);
   }
@@ -173,6 +171,7 @@ export abstract class AbstractListComponent<T> implements OnInit, OnDestroy {
       .subscribe(params => {
         console.log("makeParamsFromState", params);
         this.mergeParams(params);
+        this.updateUrl(this._params);
       });
   }
 
