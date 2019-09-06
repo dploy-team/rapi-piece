@@ -69,6 +69,7 @@ export abstract class AbstractListComponent<T> implements OnInit, OnDestroy {
   }
 
   sortData(ev: Sort): void {
+    console.log(ev);
     this._params.sort = makeSortParams(ev, this._config.sort);
     this._params.page = 1;
     this.loadResource();

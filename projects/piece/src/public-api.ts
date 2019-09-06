@@ -66,3 +66,8 @@ export { InfoCardModule } from "./lib/components/info-card/info-card.module";
 export {
   InfoCardComponent
 } from "./lib/components/info-card/info-card.component";
+
+/**
+ * Upload
+ */
+export { ConfigUpload, UploadService } from "./lib/services/upload.service";

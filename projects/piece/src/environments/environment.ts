@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   URL_API: "",
-  IBGE_URL: ""
+  IBGE_URL: "",
+  UPLOAD_TOKEN: ""
 };
 
 /*
