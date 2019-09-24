@@ -71,3 +71,11 @@ export {
  * Upload
  */
 export { ConfigUpload, UploadService } from "./lib/services/upload.service";
+
+/**
+ * Image viewer
+ */
+export { ImageViewModule } from "./lib/components/image-view/image-view.module";
+export {
+  ImageViewComponent
+} from "./lib/components/image-view/image-view.component";

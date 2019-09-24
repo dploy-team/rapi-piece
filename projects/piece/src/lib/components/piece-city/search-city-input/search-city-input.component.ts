@@ -11,14 +11,12 @@ import {
 } from "@angular/core";
 import { FormBuilder, FormGroup, NG_VALUE_ACCESSOR } from "@angular/forms";
 import { MatDialog, MatDialogConfig } from "@angular/material";
-import { Subscription } from "rxjs/index";
-import { debounceTime, filter, switchMap, tap } from "rxjs/internal/operators";
-import { Subject } from "rxjs/Subject";
 
 import { ValueAccessorBase } from "@dploy-rapi/w3";
 import { PieceCityService } from "../piece-city.service";
-import { PieceCity } from "../piece-city.model";
 import { FormCityDialogComponent } from "../form-city-dialog/form-city-dialog.component";
+import { filter, debounceTime, tap, switchMap } from "rxjs/operators";
+import { Subscription } from "rxjs";
 
 /*
 example
@@ -57,7 +55,6 @@ export class SearchCityInputComponent extends ValueAccessorBase<any>
   };
 
   private sub: Subscription;
-  private destroyed$ = new Subject<void>();
 
   @Input() enableCreate? = false;
   @Input() configLabels?: SearchCityInputConfig;
@@ -131,9 +128,9 @@ export class SearchCityInputComponent extends ValueAccessorBase<any>
     }
   }
 
-  displayFn(city: PieceCity): string {
+  displayFn(city: any): string {
     if (city) {
-      return city.city_name;
+      return city.description;
     }
   }
 

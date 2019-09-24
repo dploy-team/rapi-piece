@@ -18,7 +18,7 @@ export class PieceCityService {
 
   querySearch(filter: { q: string } = { q: "" }): Observable<any> {
     return this.http
-      .get<any>(`${environment.URL_API}/rapi/fuse/cities`, {
+      .get<any>(`${environment.PLACES_API}`, {
         params: { q: filter.q, paginate: "20" }
       })
       .pipe(
@@ -31,7 +31,7 @@ export class PieceCityService {
 
   search(params: {}) {
     return this.http
-      .get<CollectionResponse>(`${environment.URL_API}/rapi/fuse/cities`, {
+      .get<CollectionResponse>(`${environment.PLACES_API}`, {
         params: params
       })
       .pipe(
@@ -51,7 +51,7 @@ export class PieceCityService {
     };
 
     return this.http
-      .get<CollectionResponse>(`${environment.URL_API}/cidades/places`, data)
+      .get<CollectionResponse>(`${environment.PLACES_API}`, data)
       .pipe(map(res => res.data));
   }
 
@@ -61,7 +61,7 @@ export class PieceCityService {
       include: "state.country"
     };
     return this.http
-      .post<ItemResponse>(`${environment.URL_API}/cidades/places`, data)
+      .post<ItemResponse>(`${environment.PLACES_API}`, data)
       .pipe(map(res => res.data));
   }
 
