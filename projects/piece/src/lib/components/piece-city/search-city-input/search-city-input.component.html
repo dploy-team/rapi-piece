@@ -1,30 +1,55 @@
-<form  [formGroup]='citysForm'>
-    <div fxLayout="row">
-        <mat-form-field class="search-city-input" [appearance]="configLabels.appearance">
-            <mat-label>{{configLabels.label}}</mat-label>
-            <input [required]="require" matInput placeholder="{{configLabels.labelSearch}}" [matAutocomplete]="auto"
-                   formControlName='cityInput'>
-        </mat-form-field>
-        <mat-spinner *ngIf="isLoading === true" color="accent" diameter="30"></mat-spinner>
-        <button *ngIf="isLoading !== true && hasCity" (click)="citysForm.reset({cityInput: ''})" mat-icon-button="">
-            <mat-icon>close</mat-icon>
-        </button>
-    </div>
+<form [formGroup]="citysForm">
+  <div fxLayout="row">
+    <mat-form-field
+      class="search-city-input"
+      [appearance]="configLabels.appearance"
+    >
+      <mat-label>{{ configLabels.label }}</mat-label>
+      <input
+        [required]="require"
+        matInput
+        placeholder="{{ configLabels.labelSearch }}"
+        [matAutocomplete]="auto"
+        formControlName="cityInput"
+      />
+    </mat-form-field>
+    <mat-spinner
+      *ngIf="isLoading === true"
+      color="accent"
+      diameter="30"
+    ></mat-spinner>
+    <button
+      *ngIf="isLoading !== true && hasCity"
+      (click)="citysForm.reset({ cityInput: '' }); removeCity.emit()"
+      mat-icon-button=""
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
 
-    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn"
-                      (optionSelected)='getPosts($event.option.value)'>
-        <mat-option *ngFor="let city of filteredCities" [value]="city">
-            <span>{{ city.city_name }}</span>
-            <small> | ID: {{city.id}}</small>
-        </mat-option>
-        <mat-option *ngIf="isEmpty && !enableCreate" class="empty-option" value="null">
-            {{configLabels.labelEmptyState}}
-        </mat-option>
-        <mat-option *ngIf="isEmpty && enableCreate" class="empty-option" value="new">
-            {{configLabels.labelEmptyState}}
-            <a>{{configLabels.labelCreateMsg}}</a>
-        </mat-option>
-    </mat-autocomplete>
-
-
+  <mat-autocomplete
+    #auto="matAutocomplete"
+    [displayWith]="displayFn"
+    (optionSelected)="getPosts($event.option.value)"
+  >
+    <mat-option *ngFor="let city of filteredCities" [value]="city">
+      <span>{{ city.city_name }}</span>
+      <small> | ID: {{ city.id }}</small>
+    </mat-option>
+    <mat-option
+      *ngIf="isEmpty && !enableCreate"
+      class="empty-option"
+      value="null"
+    >
+      {{ configLabels.labelEmptyState }}
+    </mat-option>
+    <mat-option
+      *ngIf="isEmpty && enableCreate"
+      class="empty-option"
+      value="new"
+    >
+      {{ configLabels.labelEmptyState }}
+      <a>{{ configLabels.labelCreateMsg }}</a>
+    </mat-option>
+  </mat-autocomplete>
 </form>

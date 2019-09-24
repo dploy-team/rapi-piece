@@ -62,6 +62,7 @@ export class SearchCityInputComponent extends ValueAccessorBase<any>
   @Input() enableCreate? = false;
   @Input() configLabels?: SearchCityInputConfig;
   @Output() selectCity = new EventEmitter();
+  @Output() removeCity = new EventEmitter();
   @Input() require? = false;
   @Input() city?;
 
